@@ -1,0 +1,105 @@
+#courses {
+    border: 2px solid #ea9f0a;
+    grid-area: edit;
+    margin: 2em 2em 0em 1em;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+#submit {
+    margin-top: 20px;
+}
+
+#submitprogress {
+    margin-top: 20px;
+    visibility: hidden;
+}
+#ctable {
+    border: 2px solid #ea9f0a;
+    grid-area: ctable;
+    margin: 2em 2em;
+    border-radius: 10px;
+}
+#ctable {
+    margin: 0;
+    margin: 1em;
+}
+
+.top-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 6px;
+    overflow: hidden;
+    background-color: #ea9f0a;
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 2
+  }
+  
+  .top-nav li {
+    float: right;
+    cursor: pointer;
+    margin-right: 23px;
+  }
+  
+  .top-nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .top-nav h4 {
+    padding-left: 150px;
+  }
+  
+  @media screen and (max-width: 900px) {
+    .top-nav h4 {
+      padding-left: 60px;
+    }
+  }
+  
+  .progress {
+    background-color: #90bce9;
+  }
+  
+  .top-navbar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fd7600;
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 2
+  }
+  .top-navbar li {
+    float: left;
+  }
+  
+  .top-navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .top-navbar li a:hover {
+    background-color: #fd7600;
+  }
+
+  .grid {
+    margin: 0;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "course-input edit" "ctable ctable";
+    grid-gap: 0.3rem;
+}

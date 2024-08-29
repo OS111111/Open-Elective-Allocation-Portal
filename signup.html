@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link rel="icon" href="" type="image/gif" sizes="16x16">
+
+</head>
+
+<body>
+    <div class="home-overlay"></div>
+    <main class="login-card">
+        <div class="card white">
+            <div class="card-content black-text">
+                <span class="card-title center">
+
+                    <h4 style="color: black;">Sign Up</h4>
+                </span>
+                <form action="signup1.php" method="post">
+                    <div class="input-field col s12">
+                        
+                        
+                        <div id="details">
+
+                           
+
+                           
+                        </div>
+
+                    </div>
+                    <div id="cred">
+                        <div class="input-field col s12">
+                            <input id="signinemail" type="email" name="email" placeholder="Email ID">
+                            <small>Enter Official Mail-ID</small>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <input id="signinpassword" type="password" name="password" placeholder="Password">
+                            <small>Password should be minimum six characters</small>
+                        </div>
+                        <div class="center">
+                            <button class="waves-effect waves-light btn orange darken-2" type="submit"
+                                id="signinbtn">Sign
+                                Up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="progress orange lighten-4" id="signinprogress">
+                <div class="indeterminate blue darken-2"></div>
+            </div>
+        </div>
+    </main>
+
+    </div>
+    <div class="fixed-action-btn toolbar">
+        <a class="btn-floating btn-large orange
+         darken-2 ">
+            <i class="large material-icons">help</i>
+        </a>
+        <ul>
+            <li><a class="btn-floating">Developed By</a></li>
+            <li><a href="" target="_blank" class="btn-floating">Omkar</a></li>
+            <li><a href="" target="_blank" class="btn-floating ">Pratham</a></li>
+            <li><a href="" target="_blank" class="btn-floating "><i
+                class="material-icons">info</i>Help</a></li>
+        </ul>
+    </div>
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--Firebase Connection-->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                toolbarEnabled: true
+            });
+        });
+    </script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyD9BHz-HTQl518KmUr1GHHx0IXJGj7bJP8",
+            authDomain: "openelectiveallocation.firebaseapp.com",
+            projectId: "openelectiveallocation",
+            storageBucket: "openelectiveallocation.appspot.com",
+            messagingSenderId: "953116708866",
+            appId: "1:953116708866:web:69c0de0ba08dda4efc971b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore()
+    </script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/signup.js"></script>
+</body>
+
+</html>

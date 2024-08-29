@@ -1,0 +1,293 @@
+body {
+    overflow: hidden;
+  }
+  
+  h5 {
+    margin: 0;
+    padding: 0;
+    padding: 10px;
+  }
+  
+  .grid {
+    margin: 0;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 260px 260px;
+    grid-template-areas: "browser open-portal close-reg" "browser publish close-portal";
+    grid-gap: 0.3rem;
+  }
+  
+  #browser {
+    grid-area: browser;
+    margin: 0em 2em;
+    border: 3px solid #fd7600;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-radius: 15px;
+  }
+  
+  #open-portal {
+    grid-area: open-portal;
+  }
+  
+  #close-reg {
+    grid-area: close-reg;
+  }
+  
+  #publish {
+    grid-area: publish;
+  }
+  
+  #close-portal {
+    grid-area: close-portal;
+  }
+  
+  .schedule {
+    margin-top: 40px;
+    position: relative;
+  }
+  
+  .timeline {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .li {
+    transition: all 200ms ease-in;
+  }
+  
+  .status {
+    padding: 10px 40px;
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid #D6DCE0;
+    position: relative;
+    transition: all 200ms ease-in;
+  }
+  
+  .status h5 {
+    font-weight: 500;
+    font-size: 18px;
+  }
+  
+  .status:before {
+    content: "";
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    position: absolute;
+    top: -15px;
+    left: 42%;
+    transition: all 200ms ease-in;
+  }
+  
+  .li.complete .status {
+    border-top: 2px solid #fd7600;
+  }
+  
+  .li.complete .status:before {
+    background-color: #fd7600;
+    border: none;
+    transition: all 200ms ease-in;
+  }
+  
+  .li.complete .status h5 {
+    color: #fd7600;
+  }
+  
+  /* Container for columns and the top "toolbar" */
+  
+  .br-row {
+    padding: 10px;
+    background: #fd7600;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  
+  /* Create three unequal columns that floats next to each other */
+  
+  .column {
+    float: left;
+  }
+  
+  .left {
+    width: 15%;
+  }
+  
+  .right {
+    width: 10%;
+  }
+  
+  .middle {
+    width: 75%;
+  }
+  
+  /* Clear floats after the columns */
+  
+  .br-row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Three dots */
+  
+  .dot {
+    margin-top: 4px;
+    height: 12px;
+    width: 12px;
+    background-color: #fd7600;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  /* Style the input field */
+  
+  .br-input {
+    width: 100% !important;
+    border-radius: 3px !important;
+    border: none !important;
+    background-color: white !important;
+    height: 25px !important;
+    color: #666 !important;
+    padding: 5px !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Three bars (hamburger menu) */
+  
+  .bar {
+    width: 17px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    display: block;
+  }
+  
+  /* Page content */
+  
+  .content {
+    padding: 10px;
+  }
+  
+  tr {
+    border-bottom: 0;
+  }
+  
+  .card.white {
+    border: 2px solid #fd7600;
+    border-radius: 20px;
+    margin: 2em 3em;
+    padding: 2em;
+  }
+  
+  #wrap1 {
+    width: 100%;
+    height: 405px;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  #frame1 {
+    width: 200%;
+    height: 795px;
+    border: 1px solid black;
+  }
+  
+  #frame1 {
+    -ms-zoom: 0.75;
+    -moz-transform: scale(0.5);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.5);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+  }
+  
+  @media only screen and (max-width:900px) {
+    body {
+      overflow: visible;
+    }
+    .grid {
+      margin-top: 20px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 400px 150px 150px;
+      grid-template-areas: "browser browser" "open-portal close-reg" "publish close-portal";
+    }
+    .dot {
+      margin-top: 12px;
+      height: 7px;
+      width: 7px;
+    }
+    .br-input {
+      font-size: 13px !important;
+      height: 18px !important;
+    }
+    .bar {
+      margin-top: 5px;
+      width: 12px;
+      height: 2px;
+    }
+    h4 {
+      font-size: 25px;
+    }
+    h5 {
+      font-size: 15px;
+    }
+    .card.white {
+      margin: 0.5em;
+      padding: 0;
+    }
+    .btn {
+      margin: 0;
+      font-size: 10px;
+    }
+    .schedule {
+      display: none;
+    }
+    #wrap1 {
+      width: 100%;
+      height: 290px;
+      padding: 0;
+      overflow: hidden;
+    }
+    #frame1 {
+      width: 200%;
+      height: 580px;
+      border: 1px solid black;
+    }
+    #frame1 {
+      -ms-zoom: 0.75;
+      -moz-transform: scale(0.5);
+      -moz-transform-origin: 0 0;
+      -o-transform: scale(0.5);
+      -o-transform-origin: 0 0;
+      -webkit-transform: scale(0.5);
+      -webkit-transform-origin: 0 0;
+    }
+  }
+  
+  @media (min-device-width: 320px) and (max-device-width: 900px) {
+    .timeline {
+      list-style-type: none;
+      display: block;
+    }
+    .li {
+      transition: all 200ms ease-in;
+      display: flex;
+      width: inherit;
+    }
+    .timestamp {
+      width: 100px;
+    }
+    .status:before {
+      left: -8%;
+      top: 30%;
+      transition: all 200ms ease-in;
+    }
+  }

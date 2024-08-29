@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses Setting</title>
+  <link rel="icon" href="/assets/favicon/course.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="courses.css">
+
+</head>
+<!-- nav -->
+
+<body>
+  <ul class="top-nav">
+    <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
+    <h4 class="center">Courses Setting</h4>
+  </ul>
+
+  <!-- sidenav -->
+  <ul id="slide-out" class="sidenav blue darken-2">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img id="test" src="/assets/bg.jpg">
+        </div>
+        <a href="#user"><img class="circle" src="user.png"></a>
+        <a href="#name"><span class="black-text name" id="navname"><b>Admin</b></span></a>
+        <a href="#email"><span class="black-text email" id="navemail">admin@admin.com</span></a>
+      </div>
+    </li>
+
+    <li><a href="/admin/adminhomepage.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">schedule</i>Schedule</a></li>
+    <li><a href="/admin/courses.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">book</i>Courses Setting</a></li>
+    <li><a href="/admin/allocation.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">check_box</i>Allocation</a></li>
+    <li><a href="/admin/studdata.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">data_usage</i>Student Data</a></li>
+    <li><a href="/admin/adminsettings.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">settings</i>Admin Settings</a></li>
+    <li>
+      <div class="divider white-text"></div>
+    </li>
+    <li><a class="waves-effect waves-light btn black-text white" id="studlogout" onclick="logout()">Logout</a></li>
+  </ul>
+
+  <form action="add_course.php" method="post" >
+  <div class="grid">
+    <!-- Add or Edit New Course -->
+    <div id="course-input">
+      <h6>Add/Edit Course</h6>
+      <div class="input-field col s6">
+        <input id="cname" type="text" name="course_name" class="validate">
+        <label for="cname">Course Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="cno" type="text" name="course_no" class="validate">
+        <label for="cno">Course Number</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="cincapa" type="number" name="student_cap" class="validate">
+        <label for="cincapa">Student Capacity</label>
+      </div>
+      
+      <h6>Course School</h6>
+      <select id="schooldd" class="input-field col s12" name="course_sch" >
+        <option value="" disabled selected>Choose your option</option>
+        <option >CSE</option>
+        <option >AUTO</option>
+        <option >MECH</option>
+        <option >PSY</option>
+        <option >BBA</option>
+        <option >ELE</option>
+      </select>
+      <h6>Open To</h6>
+      <label>
+        <input id="c1" name="open_to[]" type="checkbox" value="CSE" />
+        <span id="checktext">CSE</span>
+      </label>
+      <label>
+        <input id="c2" name="open_to[]" type="checkbox" value="AUTO" />
+        <span id="checktext" value ="AUTO">AUTO</span>
+      </label>
+      <label>
+        <input id="c3" name="open_to[]" type="checkbox" value="MECH" />
+        <span id="checktext">MECH</span>
+      </label>
+      <label>
+        <input id="c4" name="open_to[]" type="checkbox" value="PSY" />
+        <span id="checktext">PSY</span>
+      </label>
+      <label>
+        <input id="c5" name="open_to[]" type="checkbox" value="BBA" />
+        <span id="checktext">BBA</span>
+      </label>
+      <label>
+        <input id="c6" name="open_to[]" type="checkbox" value="ELE" />
+        <span id="checktext">ELE</span>
+      </label>
+      
+      <button class="waves-effect waves-light btn orange darken-2" id="addcourse" name="add" onclick="fetchAndDisplayData()" >ADD</button >
+    </div>
+  </form>
+
+    <!-- Edit Course -->
+    <div id="edit">
+      <div id="editdel">
+        <h6>Edit Course</h6>
+        <div class="input-field col s6 center">
+          <input type="number" id="cedit">
+          <label for="cedit">Enter Course No</label>
+          <a class="waves-effect waves-light btn orange darken-2" id="editcourse" onclick="editcourse()">Edit</a>
+        </div>
+        <h6>Delete Course</h6>
+        <form action="delete_courses.php" method="post" >
+        <div class="input-field col s6 center">
+          <input type="text" id="cdelete" name="course_no">
+          <label for="cdelete">Enter Course No</label>
+          <button class="waves-effect waves-light btn orange darken-2" id="deletecourse" >Delete</button>
+        </div>
+      </form>
+        <!-- progress bar for all process -->
+        <!-- <div class="progress orange lighten-4" id="cprogress">
+          <div class="indeterminate orange darken-2"></div> -->
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Course Table -->
+
+    <div id="ctable">
+      <table id="courset" class="centered striped">
+        <thead>
+          <tr>
+            <th>Course No</th>
+            <th>Course Name</th>
+            <th>Student Capacity</th>
+            
+            <th>Course School</th>
+            <th>Open To</th>
+          </tr>
+        </thead >
+        <tbody id="courseBody" >
+        </tbody>
+      </table>
+    </div>
+    <div id="padding"></div>
+  </div>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- side nav script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+    });
+  </script>
+
+  
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Function to fetch and display data
+        function fetchData() {
+            $.ajax({
+                url: 'fetch_courses.php', // Adjust the URL to your server-side script
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    displayData(data);
+                },
+                error: function (error) {
+                    console.log('Error fetching data:', error);
+                }
+            });
+        }
+
+        // Function to display data in the table
+        function displayData(data) {
+            var tableBody = $('#courseBody');
+            tableBody.empty(); // Clear existing data
+
+            data.forEach(course => {
+                const row = tableBody[0].insertRow();
+                row.insertCell(0).textContent = course.course_no;
+                row.insertCell(1).textContent = course.course_name;
+                row.insertCell(2).textContent = course.student_cap;
+                row.insertCell(3).textContent = course.course_sch;
+                row.insertCell(4).textContent = course.open_to;
+            });
+        }
+
+        // Fetch and display data on page load
+        fetchData();
+    });
+</script>
+</body>
+
+</html>

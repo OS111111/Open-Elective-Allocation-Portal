@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Elective Allocation Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <form id="prefForm" action="submit_pref.php" method="post">
+        <div id="courses">
+            <div id="pref">
+                <h5>Select Preferences</h5>
+                <select id="schooldd" name="course_alloted" class="input-field col s12" onchange="selectpref()">
+                    <option value="">Select preferences</option>
+                    <!-- Options will be populated dynamically using JavaScript -->
+                </select>
+                <button type="submit" class="waves-effect waves-light btn orange darken-2" name="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        // You can add JavaScript to populate the options dynamically here
+        $(document).ready(function () {
+            // Add your code to populate options dynamically here
+        });
+    </script>
+    
+</body>
+</html>

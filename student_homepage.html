@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Elective Allocation Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="stud.css">
+    <link rel="stylesheet" href="studhome.css">
+    <link rel="icon" href="studhomepage.png" type="image/gif" sizes="16x16">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Function to fetch student details
+            $.ajax({
+                type: 'POST',
+                url: 'get_student_details.php', // Change to your PHP file handling the request
+                success: function (response) {
+                    $('#dispPRN').html("<b>Reg No: " + response.reg_no + "</b>");
+                    $('#dispname').html("<b>Name: " + response.stud_name + "</b>");
+                    $('#disbranch').html("<b>Branch: " + response.stud_branch + "</b>");
+                    
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: 'get_alloted_detail.php', // Change to your PHP file handling the request
+                success: function (response) {
+                    
+                    $('#dissub').html("<b>Course Alloted : " + response.course_alloted + "</b>");
+                }
+            });
+
+            // Function to fetch courses when the page loads
+            $.ajax({
+                type: 'POST',
+                url: 'get_courses.php', // Change to your PHP file handling the request
+                success: function (response) {
+                    $('#schooldd').html(response);
+                }
+            });
+
+            // Event handler for branch selection
+            $('#userBranch').change(function () {
+                var selectedBranch = $(this).val();
+
+                // AJAX request to fetch courses based on the selected branch
+                $.ajax({
+                    type: 'POST',
+                    url: 'get_courses.php', // Change to your PHP file handling the request
+                    data: { branch: selectedBranch },
+                    success: function (response) {
+                        $('#schooldd').html(response);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <ul class="top-nav">
+        <li><a onclick="logout()"><i class="material-icons left">power_settings_new</i>Logout</a></li>
+        <h4 class="center">Preferences</h4>
+    </ul>
+
+
+    <!-- Student Details and Instructions -->
+    <div class="grid">
+        <div id="instructions">
+            <h5>Your Details</h5>
+            <span id="dispPRN"><b>Reg No:</b></span>
+            <span id="dispname"><b>Name:</b></span>
+            <span id="disbranch"><b>Branch:</b></span>
+            <span id="dissub"><b>Course Alloted :</b></span>
+
+            <hr>
+            <h5>Instructions</h5>
+            <span>1. Verify that your details are correct.</span>
+            <span>2. If there is any correction in the data contact at<a href="">
+                </a></span>
+            <span>3. You need to give preferences for all the available subjects in the dropdown.</span>
+            <span>4. Preference no. 1 being the highest priority and Preference no. last being the lowest priority.</span>
+        </div>
+
+        <!-- Course Dropdown -->
+        <form id="prefForm" action="student_sub_alloc.php" method="post">
+        <div id="courses">
+            <div id="pref">
+                <h5>Select Preferences</h5>
+                <select id="schooldd" name="course_alloted" class="input-field col s12" onchange="selectpref()">
+                    <option value="">Select preferences</option>
+                </select>
+                <button class="waves-effect waves-light btn orange darken-2" name="submit" id="resetcourses">submit</btton>
+            </div>
+            
+            <div id="submit">
+                <hr>
+                <button class="waves-effect waves-light btn orange darken-1"  name="change" id="submitprefbtn"
+                    onclick="submitpref()">change OE</button>
+            </div>
+            <div class="progress orange lighten-4" id="submitprogress">
+                <div class="indeterminate orange darken-2"></div>
+            </div>
+        </div>
+      </form>
+
+        <!-- Preference Table -->
+
+        <div id="ctable">
+          <table id="courset" class="centered striped">
+            <thead>
+              <tr>
+                
+                <th>Course Name</th>
+                <th>Student Capacity</th>
+                
+                
+              </tr>
+            </thead >
+            <tbody id="courseBody" >
+            </tbody>
+          </table>
+        </div>
+        <div id="padding"></div>
+      </div>
+    
+
+    <div class="fixed-action-btn toolbar">
+        <a class="btn-floating btn-large orange darken-2 ">
+            <i class="large material-icons">help</i>
+        </a>
+        <ul>
+            <li><a class="btn-floating">Developed By</a></li>
+            <li><a href="https://www.linkedin.com/in/pratham-sumit-chowdhury-922016231/" target="_blank"
+                    class="btn-floating">Pratham
+                    Chowdhury</a></li>
+            <li><a href="https://www.linkedin.com/in/omkar-shete-a09852226/" target="_blank"
+                    class="btn-floating ">omkar
+                    Shete</a></li>
+            <li><a href="/instructions.html" target="_blank" class="btn-floating "><i
+                        class="material-icons">info</i>Help</a>
+            </li>
+        </ul>
+    </div>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                toolbarEnabled: true
+            });
+        });
+    </script>
+
+<script>
+  $(document).ready(function () {
+      // Function to fetch and display data
+      function fetchData() {
+          $.ajax({
+              url: 'student_course_seat.php', // Adjust the URL to your server-side script
+              type: 'GET',
+              dataType: 'json',
+              success: function (data) {
+                  displayData(data);
+              },
+              error: function (error) {
+                  console.log('Error fetching data:', error);
+              }
+          });
+      }
+
+      // Function to display data in the table
+      function displayData(data) {
+          var tableBody = $('#courseBody');
+          tableBody.empty(); // Clear existing data
+
+          data.forEach(course => {
+              const row = tableBody[0].insertRow();
+              row.insertCell(0).textContent = course.course_name;
+              row.insertCell(1).textContent = course.internal_cap;
+              
+          });
+      }
+
+      // Fetch and display data on page load
+      fetchData();
+  });
+</script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+  
+  </html>

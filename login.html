@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Elective Allocation Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <!-- Modal Structure -->        
+        <div class="row footer modal-footer" style="text-align: center;">
+            <p><a href="" target="_blank" style="color: rgb(255, 225, 0);"></a><a
+                    href="" target="_blank"></a></p>
+        </div>
+    </div>
+
+
+    <div class="home-overlay"></div>
+    <h3 class="center">STUDENT PORTAL</h3>
+    <main class="login-card">
+        <div class="card white">
+            <span class="card-title center">
+                <h4 style="color:#000000 ; font-weight: bold;">Login</h4>
+            </span>
+            <div class="center"><img id="clglogo" src="uhjjm31d.wuj.png" alt="MITAOE Logo"></div>
+            <div class="card-content">
+                <form action="login1.php" method="post" >
+                    <div>
+                        <small>Enter Email</small>
+
+                        <input id="loginemail" type="email" name ="email" placeholder="Email ID">
+                        <small>Enter Password</small>
+                    </div>
+                    <div>
+                        <input id="loginpassword" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div id="bottom-text" class="center">
+                        <a href="reset.html" target="_blank">Forgot Password</a>
+                    </div>
+                    <div class="center">
+                        <a href="reg.html">Sign Up</a>
+                    </div>
+                   
+                   
+                    <div class="center">
+                        <button class="waves-effect waves-light btn orange darken-2" id="login" type="submit" style="color: #000000; background-color: black;"
+                            >Login</button>
+                    </div>
+                </form>
+            </div>
+            <div class="progress orange lighten-4" id="loginprogress">
+                <div class="indeterminate blue darken-2"></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="fixed-action-btn toolbar">
+        <a class="btn-floating btn-large orangee darken-2 ">
+            <i class="large material-icons" style="color: chocolate; background-color: #000000; outline-color: #000000;"></i>
+        </a>
+        <ul>
+            <li><a   style="background-color: #000000; "></a></li>
+            <li><a href="https://www.linkedin.com/in/omkar-shete-a09852226/" target="_blank" style="background-color: #000000; "></a></li>
+            <li><a href="https://www.linkedin.com/in/pratham-sumit-chowdhury-922016231/" target="_blank"  style="background-color: #000000; "></a></li>
+            
+        </ul>
+    </div>
+
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--Firebase Connection-->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                toolbarEnabled: true
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+
+    </script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyD9BHz-HTQl518KmUr1GHHx0IXJGj7bJP8",
+            authDomain: "openelectiveallocation.firebaseapp.com",
+            projectId: "openelectiveallocation",
+            storageBucket: "openelectiveallocation.appspot.com",
+            messagingSenderId: "953116708866",
+            appId: "1:953116708866:web:69c0de0ba08dda4efc971b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="scripts/auth.js"></script>
+</body>
+
+</html>

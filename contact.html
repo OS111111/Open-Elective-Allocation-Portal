@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="with=device-width, intial scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+        <title>
+            Manipal University Jaipur/Contact
+        </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <!-- Header section -->
+        <section class="sub-header">
+           <nav>
+            <a href="index.html"><img src="pictures/logo2.png"></a>
+            <div class="nav-links" id="navLinks"><!--id navlinks is to be used in java script for the showing and hiding of the navigation bar-->
+                <div class="icon1"><i class="fa fa-times" onclick="hidemenu()"></i></div>
+
+                <ul>
+                    <li><a href="muj home page .html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="login.html" target="_blank">LOGIN</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+             </div>
+             <div class="icon2"><i class="fa fa-bars" onclick="showmenu()"></i></div>
+
+           </nav>
+                <h1>Contact Us</h1>
+
+           </div>
+             
+        </section>
+        <div>
+
+        </div>
+        <!-- contact section -->
+
+        <section class="location">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3881.950590096903!2d74.7806683148706!3d13.353348484375328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbca4a9ee039257%3A0x872394d80bfd9867!2sManipal%20Academy%20of%20Higher%20Education%20(MAHE)!5e0!3m2!1sen!2sin!4v1679821079378!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+        <section class="contact-us">
+            <div class="row">
+                <div class="contact-col">
+                    <div>
+                        <div class="icon5"><i class="fa fa-home"></i></div>
+                        <span>
+                            <h5>Tiger Circle Road, Madhav Nagar</h5>
+                            <p>Manipal, Karnataka 576104, INDIA</p>
+                        </span>
+                    </div>
+                    <div>
+                        <div class="icon5"><i class="fa fa-phone"></i></div>
+                        <span>
+                            <h5>+91 07411747070</h5>
+                            <p>Monday to Friday, 10AM to 6PM</p>
+                        </span>
+                    </div>
+                    <div>
+                        <div class="icon5"><i class="fa fa-envelope-o"></i></div>
+                        <span>
+                            <h5>manipal@edu</h5>
+                            <p>Email us your querry</p>
+                        </span>
+                    </div>
+                </div>
+                <div class="contact-col">
+                    <form action="contactformhandler.php" method="post">
+                        <input type="text" name="name" placeholder="Enter your Name" required>
+                        <input type="email" name="email" placeholder="Enter your Email address" required>
+                        <input type="text" name="subject" placeholder="Enter your subject" required>
+                        <textarea rows="8" name="message" placeholder="message" required></textarea>
+                        <button type="submit" class="hero-btn red-btn">Send Message</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </section>
+
+        
+        
+       
+        
+   
+
+        <!-- footer -->
+
+        <section class="footer">
+                <h3>About Us</h3>
+                <p>The Manipal Education Group includes five Universities:
+                     Manipal Academy of Higher Education (MAHE, Karnataka),
+                     <br> Sikkim Manipal University (Sikkim), American University of Antigua
+                      (Caribbean Islands), Manipal International University
+                      <br>  (Malaysia)and Manipal University Jaipur (Jaipur).</p>
+            </div>
+            <div class="icon4">
+                <i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-instagram"></i>&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-twitter"></i>&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-linkedin"></i>
+            </div>  
+        <p>made by Sanyog Singh <i class="fa fa-heart-o"></i></p>
+        </section>
+        
+
+
+
+        
+
+
+        <!-- java script for toggle menu -->
+        <script>
+            var navLinks=document.getElementById("navLinks");
+            function showmenu(){
+                navLinks.style.right="0";               // shows the manu on clicking the three lines
+            }
+            function hidemenu(){
+                navLinks.style.right="-200px"           // hides the menu after click on cross icon
+            }
+
+        </script>
+    </body>
+</html>

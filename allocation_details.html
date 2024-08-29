@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALLOCATION SETTING</title>
+  <link rel="icon" href="/assets/favicon/course.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="courses.css">
+
+</head>
+<!-- nav -->
+
+<body>
+  <ul class="top-nav">
+    <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
+    <h4 class="center">ALLOCATION SETTING</h4>
+  </ul>
+
+  <!-- sidenav -->
+  <ul id="slide-out" class="sidenav blue darken-2">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img id="test" src="/assets/bg.jpg">
+        </div>
+        <a href="#user"><img class="circle" src="user.png"></a>
+        <a href="#name"><span class="black-text name" id="navname"><b>Admin</b></span></a>
+        <a href="#email"><span class="black-text email" id="navemail">admin@admin.com</span></a>
+      </div>
+    </li>
+
+    <li><a href="/admin/adminhomepage.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">schedule</i>Schedule</a></li>
+    <li><a href="/admin/courses.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">book</i>Courses Setting</a></li>
+    <li><a href="/admin/allocation.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">check_box</i>Allocation</a></li>
+    <li><a href="/admin/studdata.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">data_usage</i>Student Data</a></li>
+    <li><a href="/admin/adminsettings.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">settings</i>Admin Settings</a></li>
+    <li>
+      <div class="divider white-text"></div>
+    </li>
+    <li><a class="waves-effect waves-light btn black-text white" id="studlogout" onclick="logout()">Logout</a></li>
+  </ul>
+
+ 
+
+    <!-- Course Table -->
+
+    <div id="ctable">
+      <table id="courset" class="centered striped">
+        <thead>
+          <tr>
+            <th>Reg No</th>
+            <th>Student Name</th>
+            
+            
+            <th>Alloted Course</th>
+        
+          </tr>
+        </thead >
+        <tbody id="courseBody" >
+        </tbody>
+      </table>
+    </div>
+    <div id="padding"></div>
+  </div>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- side nav script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+    });
+  </script>
+
+  
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Function to fetch and display data
+        function fetchData() {
+            $.ajax({
+                url: 'allocation_details1.php', // Adjust the URL to your server-side script
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    displayData(data);
+                },
+                error: function (error) {
+                    console.log('Error fetching data:', error);
+                }
+            });
+        }
+
+        // Function to display data in the table
+        function displayData(data) {
+            var tableBody = $('#courseBody');
+            tableBody.empty(); // Clear existing data
+
+            data.forEach(course => {
+                const row = tableBody[0].insertRow();
+                row.insertCell(0).textContent = course.reg_no;
+                row.insertCell(1).textContent = course.stud_name;
+                row.insertCell(2).textContent = course.course_alloted;
+               
+            });
+        }
+
+        // Fetch and display data on page load
+        fetchData();
+    });
+</script>
+
+<div class="center-btn">
+    <button id="exportBtn" class="btn">Export to CSV</button>
+  </div>
+<style>
+    .center-btn {
+      text-align: center;
+      margin-top: 20px; /* Adjust margin as needed */
+    }
+    </style>
+
+<script>
+    $(document).ready(function () {
+        // Function to fetch and display data
+        function fetchData() {
+            $.ajax({
+                url: 'allocation_details1.php', // Adjust the URL to your server-side script
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    displayData(data);
+                },
+                error: function (error) {
+                    console.log('Error fetching data:', error);
+                }
+            });
+        }
+    
+        // Function to display data in the table
+        function displayData(data) {
+            var tableBody = $('#courseBody');
+            tableBody.empty(); // Clear existing data
+    
+            data.forEach(course => {
+                const row = tableBody[0].insertRow();
+                row.insertCell(0).textContent = course.reg_no;
+                row.insertCell(1).textContent = course.stud_name;
+                row.insertCell(2).textContent = course.course_alloted;
+            });
+        }
+    
+        // Fetch and display data on page load
+        fetchData();
+    
+        // Export to CSV functionality
+        $("#exportBtn").click(function () {
+            exportTableToCSV('course_data.csv');
+        });
+    
+        function exportTableToCSV(filename) {
+            var csv = [];
+            var rows = document.querySelectorAll("#courset tr");
+            
+            for (var i = 0; i < rows.length; i++) {
+                var row = [], cols = rows[i].querySelectorAll("td, th");
+                
+                for (var j = 0; j < cols.length; j++)
+                    row.push(cols[j].innerText);
+                
+                csv.push(row.join(","));
+            }
+    
+            // Download CSV file
+            downloadCSV(csv.join("\n"), filename);
+        }
+    
+        function downloadCSV(csv, filename) {
+            var csvFile;
+            var downloadLink;
+    
+            // CSV file
+            csvFile = new Blob([csv], { type: "text/csv" });
+    
+            // Download link
+            downloadLink = document.createElement("a");
+    
+            // File name
+            downloadLink.download = filename;
+    
+            // Create a link to the file
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+    
+            // Hide download link
+            downloadLink.style.display = "none";
+    
+            // Add the link to DOM
+            document.body.appendChild(downloadLink);
+    
+            // Click download link
+            downloadLink.click();
+        }
+    });
+    </script>
+    
+
+</body>
+
+</html>

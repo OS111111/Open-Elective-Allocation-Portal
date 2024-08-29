@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preference</title>
+    <link rel="stylesheet" href="preference.css">
+</head>
+<body>
+
+    <ul class="top-nav">
+        <!-- <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li> -->
+        <h1 class="center" style="justify-content: center; text-align: center; ">Preference</h1>
+      </ul>
+
+
+    <div id="courses">
+        <div id="pref">
+          <h2>Select Preferences</h2>
+          <select id="schooldd" name="schooldd" class="input-field col s12" onchange="selectpref()">
+            <option value="">Select preferences</option>
+          </select>
+          <button class="waves-effect waves-light btn orange darken-2" id="resetcourses" onclick="resetcourses()">Reset All</button>
+        </div>
+        <hr>
+        <div id="submit">
+          <h2>Submit Preferences</h2>
+          <button class="waves-effect waves-light btn orange darken-2 disabled" id="submitprefbtn"
+            onclick="submitpref()">Submit</button>
+        </div>
+        <div class="progress orange lighten-4" id="submitprogress">
+          <div class="indeterminate orange darken-2"></div>
+        </div>
+      </div>
+
+
+
+      <div id="ctable">
+        <table id="preftable" class="centered striped">
+          <thead>
+            <tr>
+              <th colspan="4"><h2>Preference No</h2></th>
+              <th><h2>Course Name</h2></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="padding"></div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          var elems = document.querySelectorAll('.fixed-action-btn');
+          var instances = M.FloatingActionButton.init(elems, {
+            toolbarEnabled: true
+          });
+        });
+      </script>
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule</title>
+  <link rel="icon" href="/assets/favicon/schedule.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="adminhomepage.css">
+</head>
+<!-- nav bar -->
+
+<body>
+  <ul class="top-nav">
+    <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
+    <h4 class="center">Schedule</h4>
+  </ul>
+
+  <ul id="slide-out" class="sidenav orange darken-2">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img id="test" src="">
+        </div>
+        <a href="#user"><img class="circle" src="/assets/user.png"></a>
+        <a href="#name"><span class="black-text name" id="navname"><b>Admin</b></span></a>
+        <a href="#email"><span class="black-text email" id="navemail">admin@admin.com</span></a>
+      </div>
+    </li>
+    <li><a href="" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">schedule</i>Schedule</a></li>
+    <li><a href="courses.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">book</i>Courses Setting</a></li>
+    <li><a href="allocation_details.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">check_box</i>Allocation</a></li>
+    <li><a href="" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">data_usage</i>Student Data</a></li>
+    <li><a href="" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">settings</i>Admin Settings</a></li>
+    <li>
+      <div class="divider white-text"></div>
+    </li>
+    <li><a class="waves-effect waves-light btn black-text white" id="studlogout" onclick="logout()">Logout</a></li>
+  </ul>
+  
+
+  <!-- Stpes Text -->
+  <div class="schedule">
+    <ul class="timeline" id="timeline">
+      <li class="li">
+        <div class="status">
+          <h5>Closed State</h5>
+        </div>
+      </li>
+      <li class="li">
+        <div class="status">
+          <h5>Open Portal</h5>
+        </div>
+      </li>
+      <li class="li">
+        <div class="status">
+          <h5>Close Registration</h5>
+        </div>
+      </li>
+      <li class="li">
+        <div class="status">
+          <h5>Publish</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="grid">
+    <div id="open-portal" class="stage0">
+      <div class="card white">
+        <span class="card-title center">
+          <h5 class="center">Open Portal</h5>
+        </span>
+        <div class="card-content">
+          <div class="center">
+            <a class="waves-effect waves-light btn orange darken-2" id="openportal" onclick="openportal()">Open
+              Portal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="close-reg" class="stage1">
+      <div class="card white">
+        <span class="card-title center">
+          <h5 class="center">Close Registration</h5>
+        </span>
+        <div class="card-content">
+          <div class="center">
+            <a class="waves-effect waves-light btn orange darken-2" id="closeregistration"
+              onclick="closeregistration()">Close
+              Registration</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="publish" class="stage2">
+      <div class="card white">
+        <span class="card-title center">
+          <h5 class="center">Publish</h5>
+        </span>
+        <div class="card-content">
+          <div class="center">
+            <a class="waves-effect waves-light btn orange darken-2" id="publishbtn" onclick="publish()">Publish
+              Results</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="close-portal" class="stage3">
+      <div class="card white">
+        <span class="card-title center">
+          <h5 class="center">Close Portal</h5>
+        </span>
+        <div class="card-content">
+          <div class="center">
+            <a class="waves-effect waves-light btn orange darken-2" id="closeportal" onclick="closeportal()">Close
+              Portal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- browser -->
+    <!-- <div id="browser">
+      <h5 class="center">Student View</h5>
+      <div class="br-row">
+        <div class="column left">
+          <span class="dot" style="background:#000000;"></span>
+          <span class="dot" style="background:#FDD800;"></span>
+          <span class="dot" style="background:#5AC05A;"></span>
+        </div>
+        <div class="column middle">
+          <input class="br-input" type="text" value="https://openelective.mitaoe.ac.in">
+        </div>
+        <div class="column right">
+          <div style="float:right">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div id="wrap1">
+          <iframe id="frame1" src="/iframe/p1.html" title="description"></iframe>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.timepicker');
+      var instances = M.Timepicker.init(elems);
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.datepicker');
+      var instances = M.Datepicker.init(elems);
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+  </script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-firestore.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyD9BHz-HTQl518KmUr1GHHx0IXJGj7bJP8",
+      authDomain: "openelectiveallocation.firebaseapp.com",
+      projectId: "openelectiveallocation",
+      storageBucket: "openelectiveallocation.appspot.com",
+      messagingSenderId: "953116708866",
+      appId: "1:953116708866:web:69c0de0ba08dda4efc971b"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  <script src="/scripts/adminconsole.js"></script>
+  <script src="/scripts/adminhomepage.js"></script>
+  <!-- <script src="https://smtpjs.com/v3/smtp.js"></script> -->
+</body>
+
+</html>
